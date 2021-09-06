@@ -5,12 +5,12 @@ window.addEventListener("DOMContentLoaded", start);
 const allStudents = [];
 
 const Student = {
-    firstName: "Luder",
-    middleName: "Luder",
-    lastName: "Luder",
-    nickName: "Luder",
-    image: "Luder",
-    house: "Luder"
+    firstName: "",
+    middleName: "",
+    lastName: "",
+    nickName: "",
+    image: "",
+    house: ""
 };
 
 function start( ) {
@@ -50,26 +50,44 @@ function prepareObjects( jsonData ) {
         const firstSpace = fullname.indexOf(" ");
         const secondSpace = fullname.indexOf(" ", firstSpace + 1);
         const lastSpace = fullname.lastIndexOf(" ");
-        const nickNameThing = fullname.indexOf(" \"\" ");
+       // const nickNameThing = fullname.indexOf(" \"\" ");
         
         
        
-        const firstName = fullname.substring(0, firstSpace); // WHAT THE HELL LEANNE?!?!
-        //const firstName = fullname[0].toUpperCase()+fullname.slice(1).toLocaleLowerCase().substring(0, firstSpace); // WHAT THE HELL LEANNE?!?!
-       
-        const middleName = fullname.substring(secondSpace + 1, lastSpace);
+        //const firstName = fullname.substring(0, firstSpace); // WHAT THE HELL LEANNE?!?!
+        const firstName = fullname[0].toUpperCase()+fullname.slice(1).toLocaleLowerCase().substring(0, firstSpace); // WHAT THE HELL LEANNE?!?!
+        
+        if (fullname.indexOf(" ") >= 0) {
+            student.firstName = firstName;
+        } else {
+            student.firstName = ""; 
+        }
+
+        //const middleName = fullname.substring(secondSpace + 1, lastSpace);
+
+        //The middle name
+        const middleName = fullname.substring(fullname.indexOf(" ") + 1, fullname.lastIndexOf(" "));
+         if (middleName.includes('"')) {
+            student.nickName = fullname.substring(fullname.indexOf(" ") + 1, fullname.lastIndexOf(" "));
+            //student.nickName = nickName;
+          } else {
+           student.middleName = fullname.substring(fullname.indexOf(" ") + 1, fullname.lastIndexOf(" "));
+           student.middleName = student.middleName.substring(0, 1).toUpperCase() + student.middleName.substring(1).toLowerCase();
+           student.middleName = middleName;
+    }
+          
         
         const lastName = fullname.substring(lastSpace +1);
         //const lastName = fullname[0].toUpperCase()+fullname.slice(0).toLocaleLowerCase().substring(lastSpace +1);
 
 
-        const nickName = fullname.substring(nickNameThing);
+       // const nickName = fullname.substring(nickNameThing);
         const image = firstName.toLocaleLowerCase().replace(" ", "")+lastName.toLocaleLowerCase().replace(" ", "")+".png";
 
         //add clean data into newly created objekt
         
-        student.firstName = firstName;
-        student.middleName = middleName;
+       // student.firstName = firstName;
+        //student.middleName = middleName;
         student.lastName = lastName;
         //student.nickName = nickName;
         student.image = image;
