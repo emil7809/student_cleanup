@@ -48,7 +48,7 @@ function prepareObjects( jsonData ) {
        // const replace1 = fullname.replace(" \ ", "");
        // const replace2 = fullname.replace(" - ", " ");
         const firstSpace = fullname.indexOf(" ");
-        const secondSpace = fullname.indexOf(" ", firstSpace + 1);
+       // const secondSpace = fullname.indexOf(" ", firstSpace + 1);
         const lastSpace = fullname.lastIndexOf(" ");
        // const nickNameThing = fullname.indexOf(" \"\" ");
         
@@ -65,15 +65,13 @@ function prepareObjects( jsonData ) {
 
         //const middleName = fullname.substring(secondSpace + 1, lastSpace);
 
-        //The middle name
         const middleName = fullname.substring(fullname.indexOf(" ") + 1, fullname.lastIndexOf(" "));
          if (middleName.includes('"')) {
             student.nickName = fullname.substring(fullname.indexOf(" ") + 1, fullname.lastIndexOf(" "));
-            //student.nickName = nickName;
           } else {
            student.middleName = fullname.substring(fullname.indexOf(" ") + 1, fullname.lastIndexOf(" "));
-           student.middleName = student.middleName.substring(0, 1).toUpperCase() + student.middleName.substring(1).toLowerCase();
-           student.middleName = middleName;
+           //student.middleName = middleName;
+           //student.middleName = middleName[0].toUpperCase()+middleName.slice(1).toLocaleLowerCase();
     }
           
         
