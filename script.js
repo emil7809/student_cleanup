@@ -8,6 +8,7 @@ const Student = {
     firstName: "Luder",
     middleName: "Luder",
     lastName: "Luder",
+    //nickName: "Luder",
     image: "Luder",
     house: "Luder"
 };
@@ -34,7 +35,7 @@ function prepareObjects( jsonData ) {
         const student = Object.create(Student);
        
         //exstrack data from json objekt
-        const fullname = jsonObject.fullname;
+        const fullname = jsonObject.fullname.trim();
 
         //NAME
         //For the first name i need the info until the "First Space" (But some have space in front, so im gonna need to ... fuck whats it called? the one that trims TRIM!)
@@ -43,35 +44,35 @@ function prepareObjects( jsonData ) {
         //For the middle name i need the info until "Second Space"
         //For the last name i need the info after the "Last Space"
         //I'll start with this, and worry about fucking ERNIE and the rest lator
-        
-       // const trim = fullname.trim();
+    
        // const replace1 = fullname.replace(" \ ", "");
        // const replace2 = fullname.replace(" - ", " ");
         const firstSpace = fullname.indexOf(" ");
         const secondSpace = fullname.indexOf(" ", firstSpace + 1);
         const lastSpace = fullname.lastIndexOf(" ");
-
-        // firstName: "Luder",
-        // middleName: "Luder",
-        // lastName: "Luder",
-        // image: "Luder",
-        // house: "Luder"
         
+        //firstCapitalPara = myName[0].toUpperCase()+myName.slice(1);
+        const firstName = fullname[0].toUpperCase()+
+        fullname.slice(1).toLocaleLowerCase()
+        .substring(0, firstSpace); // WHAT THE HELL LEANNE?!?!
         
-        const firstName = fullname.substring(0, firstSpace);
-        const middleName = fullname.substring(secondSpace + 1, lastSpace);
-        const lastName = fullname.substring(lastSpace +1);
+        const middleName = fullname[0].toUpperCase()+
+        fullname.slice(1).toLocaleLowerCase()
+        .substring(secondSpace + 1, lastSpace);
+        
+        const lastName = fullname[0].toUpperCase()+
+        fullname.slice(1).toLocaleLowerCase()
+        .substring(lastSpace +1);
 
-        // console.log(`
-        // First name: ${firstName}
-        // Middle name: ${middleName}
-        // Last Name: ${lastName}`);
+        const image = firstName.toLocaleLowerCase().replace(" ", "")+lastName.toLocaleLowerCase().replace(" ", "")+".png";
 
         //add clean data into newly created objekt
         
         student.firstName = firstName;
         student.middleName = middleName;
         student.lastName = lastName;
+        student.image = image;
+        student.house = jsonObject.house[0].toUpperCase()+jsonObject.house.slice(1).toLocaleLowerCase();
 
         //add the objekt to the global array
         allStudents.push(student);
@@ -103,5 +104,7 @@ function displayStudents( student ) {
     // append clone to list
     document.querySelector("#list tbody").appendChild( clone );
 }
+
+
 
 
