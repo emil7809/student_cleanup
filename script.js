@@ -5,7 +5,7 @@ window.addEventListener("DOMContentLoaded", start);
 const allStudents = [];
 
 const Student = {
-   firstName: "Luder",
+    firstName: "Luder",
     middleName: "Luder",
     lastName: "Luder",
     image: "Luder",
@@ -35,6 +35,15 @@ function prepareObjects( jsonData ) {
        
         //exstrack data from json objekt
         const fullname = jsonObject.fullname;
+
+        //Ernest \"Ernie\" Macmillan
+        //For the first name i need the info until the "First Space" (But some have space in front, so im gonna need to ... fuck whats it called? the one that trims TRIM!)
+        //Also gotta "replace \ with nothing," if I can
+        //Also Also gotta "replace - with a space" Beacuse Justin Finch-Fletchley is a real bitch
+        //For the middle name i need the info until "Second Space"
+        //For the last name i need the info after the "Last Space"
+        //I'll start with this
+
 
         // const firstSpace = fullname.indexOf(" ");
         // const secondSpace = fullname.indexOf(" ", firstSpace + 1);
