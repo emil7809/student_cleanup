@@ -8,7 +8,7 @@ const Student = {
     firstName: "Luder",
     middleName: "Luder",
     lastName: "Luder",
-    //nickName: "Luder",
+    nickName: "Luder",
     image: "Luder",
     house: "Luder"
 };
@@ -50,20 +50,20 @@ function prepareObjects( jsonData ) {
         const firstSpace = fullname.indexOf(" ");
         const secondSpace = fullname.indexOf(" ", firstSpace + 1);
         const lastSpace = fullname.lastIndexOf(" ");
+        const nickNameThing = fullname.indexOf(" \"\" ");
         
-        //firstCapitalPara = myName[0].toUpperCase()+myName.slice(1);
-        const firstName = fullname[0].toUpperCase()+
-        fullname.slice(1).toLocaleLowerCase()
-        .substring(0, firstSpace); // WHAT THE HELL LEANNE?!?!
         
-        const middleName = fullname[0].toUpperCase()+
-        fullname.slice(1).toLocaleLowerCase()
-        .substring(secondSpace + 1, lastSpace);
+       
+        const firstName = fullname.substring(0, firstSpace); // WHAT THE HELL LEANNE?!?!
+        //const firstName = fullname[0].toUpperCase()+fullname.slice(1).toLocaleLowerCase().substring(0, firstSpace); // WHAT THE HELL LEANNE?!?!
+       
+        const middleName = fullname.substring(secondSpace + 1, lastSpace);
         
-        const lastName = fullname[0].toUpperCase()+
-        fullname.slice(1).toLocaleLowerCase()
-        .substring(lastSpace +1);
+        const lastName = fullname.substring(lastSpace +1);
+        //const lastName = fullname[0].toUpperCase()+fullname.slice(0).toLocaleLowerCase().substring(lastSpace +1);
 
+
+        const nickName = fullname.substring(nickNameThing);
         const image = firstName.toLocaleLowerCase().replace(" ", "")+lastName.toLocaleLowerCase().replace(" ", "")+".png";
 
         //add clean data into newly created objekt
@@ -71,8 +71,11 @@ function prepareObjects( jsonData ) {
         student.firstName = firstName;
         student.middleName = middleName;
         student.lastName = lastName;
+        //student.nickName = nickName;
         student.image = image;
         student.house = jsonObject.house[0].toUpperCase()+jsonObject.house.slice(1).toLocaleLowerCase();
+
+
 
         //add the objekt to the global array
         allStudents.push(student);
@@ -98,6 +101,7 @@ function displayStudents( student ) {
     clone.querySelector("[data-field=firstName]").textContent = student.firstName;
     clone.querySelector("[data-field=middleName]").textContent = student.middleName;
     clone.querySelector("[data-field=lastName]").textContent = student.lastName;
+    clone.querySelector("[data-field=nickName]").textContent = student.nickName;
     clone.querySelector("[data-field=image]").textContent = student.image;
     clone.querySelector("[data-field=house]").textContent = student.house;
 
