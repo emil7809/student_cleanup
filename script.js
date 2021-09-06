@@ -36,34 +36,42 @@ function prepareObjects( jsonData ) {
         //exstrack data from json objekt
         const fullname = jsonObject.fullname;
 
-        //Ernest \"Ernie\" Macmillan
+        //NAME
         //For the first name i need the info until the "First Space" (But some have space in front, so im gonna need to ... fuck whats it called? the one that trims TRIM!)
         //Also gotta "replace \ with nothing," if I can
         //Also Also gotta "replace - with a space" Beacuse Justin Finch-Fletchley is a real bitch
         //For the middle name i need the info until "Second Space"
         //For the last name i need the info after the "Last Space"
-        //I'll start with this
+        //I'll start with this, and worry about fucking ERNIE and the rest lator
+        
+       // const trim = fullname.trim();
+       // const replace1 = fullname.replace(" \ ", "");
+       // const replace2 = fullname.replace(" - ", " ");
+        const firstSpace = fullname.indexOf(" ");
+        const secondSpace = fullname.indexOf(" ", firstSpace + 1);
+        const lastSpace = fullname.lastIndexOf(" ");
 
-
-        // const firstSpace = fullname.indexOf(" ");
-        // const secondSpace = fullname.indexOf(" ", firstSpace + 1);
-        // const lastSpace = fullname.lastIndexOf(" ");
-
-        // const name = fullname.substring(0, firstSpace);
-        // const desc = fullname.substring(secondSpace + 1, lastSpace);
-        // const type = fullname.substring(lastSpace +1);
+        // firstName: "Luder",
+        // middleName: "Luder",
+        // lastName: "Luder",
+        // image: "Luder",
+        // house: "Luder"
+        
+        
+        const firstName = fullname.substring(0, firstSpace);
+        const middleName = fullname.substring(secondSpace + 1, lastSpace);
+        const lastName = fullname.substring(lastSpace +1);
 
         // console.log(`
-        // Name: ${name}
-        // Desc: ${desc}
-        // Type: ${type}`);
+        // First name: ${firstName}
+        // Middle name: ${middleName}
+        // Last Name: ${lastName}`);
 
         //add clean data into newly created objekt
         
-        // animal.name = name;
-        // animal.desc = desc;
-        // animal.type = type;
-        // animal.age = jsonObject.age;
+        student.firstName = firstName;
+        student.middleName = middleName;
+        student.lastName = lastName;
 
         //add the objekt to the global array
         allStudents.push(student);
