@@ -5,11 +5,11 @@ window.addEventListener("DOMContentLoaded", start);
 const allStudents = [];
 
 const Student = {
-   firstName: "lålå",
-    middleName: "lålå",
-    lastName: "lålå",
-    image: "lålå",
-    house: "lålå"
+   firstName: "Luder",
+    middleName: "Luder",
+    lastName: "Luder",
+    image: "Luder",
+    house: "Luder"
 };
 
 function start( ) {
@@ -34,8 +34,7 @@ function prepareObjects( jsonData ) {
         const student = Object.create(Student);
        
         //exstrack data from json objekt
-        
-        // const fullname = jsonObject.fullname;
+        const fullname = jsonObject.fullname;
 
         // const firstSpace = fullname.indexOf(" ");
         // const secondSpace = fullname.indexOf(" ", firstSpace + 1);
